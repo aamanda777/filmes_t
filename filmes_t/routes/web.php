@@ -18,8 +18,8 @@ Route::post('/registro', [RegistroController::class, 'register'])->name('registr
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    
-    Route::middleware(['auth', 'can.administrador'])->group(function () {
+
+    Route::middleware(['auth', 'auth.administrador'])->group(function () {
         Route::get('/filmes/listagem', [FilmeController::class, 'listagem'])->name('filmes.listagem');
         Route::get('/filmes/create', [FilmeController::class, 'create'])->name('filmes.create');
         Route::post('/filmes', [FilmeController::class, 'store'])->name('filmes.store');

@@ -44,7 +44,7 @@ class AuthController extends Controller
 
     public function showLoginForm()
     {
-        return view('login'); // Crie uma view 'login' para o formulário de login
+        return view('login');
     }
 
     public function login(Request $request)

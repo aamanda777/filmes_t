@@ -10,7 +10,7 @@ class FilmeController extends Controller
     public function index()
     {
         $filmes = Filme::all();
-        return view('filmes.listagem', compact('filmes'));
+        return view('listagem', compact('filmes'));
     }
 
     public function listagem()
@@ -21,16 +21,16 @@ class FilmeController extends Controller
 
     public function create()
     {
-        return view('filmes.create');
+        return view('create');
     }
 
     public function store(Request $request)
     {
         $data = $request->validate([
-            'nome' => 'required',
-            'sinopse' => 'required',
+            'nome' => 'required|string',
+            'sinopse' => 'required|string',
             'ano' => 'required|integer',
-            'categoria' => 'required',
+            'categoria' => 'required|integer',
             'imagem' => 'required|image|mimes:jpeg,png,jpg,gif',
             'trailer' => 'required|url',
         ]);
@@ -41,9 +41,9 @@ class FilmeController extends Controller
             'nome' => $data['nome'],
             'sinopse' => $data['sinopse'],
             'ano' => $data['ano'],
-            'categoria' => $data['categoria'],
+            'categoria_id' => $data['categoria'],
             'imagem' => $imagemPath,
-            'trailer' => $data['trailer'],
+            'link_trailer' => $data['trailer'],
         ]);
 
         return redirect()->route('filmes.listagem')->with('success', 'Filme registrado com sucesso!');
@@ -60,10 +60,10 @@ class FilmeController extends Controller
         $filme = Filme::findOrFail($id);
 
         $data = $request->validate([
-            'nome' => 'required',
-            'sinopse' => 'required',
+            'nome' => 'required|string',
+            'sinopse' => 'required|string',
             'ano' => 'required|integer',
-            'categoria' => 'required',
+            'categoria' => 'required|string',
             'trailer' => 'required|url',
         ]);
 

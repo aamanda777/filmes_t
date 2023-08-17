@@ -11,7 +11,7 @@
         <div class="flex justify-center space-x-4">
             @auth
                 @if (auth()->user()->cargo === 'administrador')
-                    <a href="{{ route('registro') }}" class="btn">Registro de Filmes </a>
+                    <a href="{{ route('filmes.create') }}" class="btn">Registro de Filmes </a>
                     <a href="{{ route('filmes.listagem') }}" class="btn">Listagem de Filmes  </a>
                 @else
                     <a href="{{ route('dashboard') }}" class="btn">Listagem de Filmes</a>
@@ -23,7 +23,7 @@
             @endauth
         </div>
     </nav>
-    
+
     <div class="flex items-center justify-center h-screen">
         <div class="text-center">
             <h1 class="text-8xl font-bold text-red-600 mb-6">SITE DE FILMES</h1>
