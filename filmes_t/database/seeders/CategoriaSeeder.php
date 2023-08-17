@@ -13,7 +13,10 @@ class CategoriaSeeder extends Seeder
             ['nome' => 'Ação'],
             ['nome' => 'Comédia'],
             ['nome' => 'Drama'],
+            ['nome' => 'Animação'],
+            ['nome' => 'Romance'],
             ['nome' => 'Ficção Científica'],
+            ['nome' => 'Terror'],
         ]);
     }
 }

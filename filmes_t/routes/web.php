@@ -1,4 +1,5 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegistroController;
@@ -26,5 +27,6 @@ Route::middleware('auth')->group(function () {
         Route::get('/filmes/{id}/edit', [FilmeController::class, 'edit'])->name('filmes.edit');
         Route::put('/filmes/{id}', [FilmeController::class, 'update'])->name('filmes.update');
         Route::delete('/filmes/{id}', [FilmeController::class, 'destroy'])->name('filmes.destroy');
+        Route::get('/filmes/{id}/detalhes', [FilmeController::class, 'detalhes'])->name('filmes.detalhes');
     });
 });

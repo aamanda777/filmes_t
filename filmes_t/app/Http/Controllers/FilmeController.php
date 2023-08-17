@@ -1,9 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Filme;
+use App\Models\Categoria;
 
 class FilmeController extends Controller
 {
@@ -16,12 +16,13 @@ class FilmeController extends Controller
     public function listagem()
     {
         $filmes = Filme::all();
-        return view('filmes.listagem', compact('filmes'));
+        return view('listagem', compact('filmes'));
     }
 
     public function create()
     {
-        return view('create');
+        $categorias = Categoria::all(); // Obtenha todas as categorias
+        return view('create', compact('categorias'));
     }
 
     public function store(Request $request)
@@ -30,7 +31,7 @@ class FilmeController extends Controller
             'nome' => 'required|string',
             'sinopse' => 'required|string',
             'ano' => 'required|integer',
-            'categoria' => 'required|integer',
+            'categoria_id' => 'required|integer',
             'imagem' => 'required|image|mimes:jpeg,png,jpg,gif',
             'trailer' => 'required|url',
         ]);
@@ -41,8 +42,8 @@ class FilmeController extends Controller
             'nome' => $data['nome'],
             'sinopse' => $data['sinopse'],
             'ano' => $data['ano'],
-            'categoria_id' => $data['categoria'],
-            'imagem' => $imagemPath,
+            'categoria_id' => $data['categoria_id'],
+            'imagem_capa' => $imagemPath,
             'link_trailer' => $data['trailer'],
         ]);
 
@@ -52,25 +53,34 @@ class FilmeController extends Controller
     public function edit($id)
     {
         $filme = Filme::findOrFail($id);
-        return view('filmes.edit', compact('filme'));
+        $categorias = Categoria::all(); // Obtenha todas as categorias
+
+        return view('edit', compact('filme', 'categorias'));
     }
 
     public function update(Request $request, $id)
     {
         $filme = Filme::findOrFail($id);
-
+    
         $data = $request->validate([
             'nome' => 'required|string',
             'sinopse' => 'required|string',
             'ano' => 'required|integer',
-            'categoria' => 'required|string',
-            'trailer' => 'required|url',
+            'categoria_id' => 'required|integer',
+            'trailer' => 'url',
         ]);
-
+    
+        if ($request->hasFile('imagem')) {
+            $imagemPath = $request->file('imagem')->store('uploads', 'public');
+            $data['imagem_capa'] = $imagemPath;
+        }
+    
         $filme->update($data);
-
-        return redirect()->route('filmes.listagem')->with('success', 'Filme atualizado com sucesso!');
+    
+        return redirect()->route('filmes.detalhes', $filme->id)->with('success', 'Filme atualizado com sucesso!');
     }
+    
+
 
     public function destroy($id)
     {
@@ -78,5 +88,13 @@ class FilmeController extends Controller
         $filme->delete();
 
         return redirect()->route('filmes.listagem')->with('success', 'Filme excluído com sucesso!');
+    }
+
+    public function detalhes($id)
+    {
+        $filme = Filme::findOrFail($id);
+        $categorias = Categoria::all(); // Obtenha todas as categorias
+
+        return view('detalhes', compact('filme', 'categorias')); // Passe as categorias para a visão
     }
 }
