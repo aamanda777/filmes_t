@@ -22,6 +22,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['auth', 'auth.role:administrador,usuario'])->group(function () {
         Route::get('/filmes/listagem', [FilmeController::class, 'listagem'])->name('filmes.listagem');
+
         Route::get('/filmes/create', [FilmeController::class, 'create'])->name('filmes.create');
         Route::post('/filmes', [FilmeController::class, 'store'])->name('filmes.store');
         Route::get('/filmes/{id}/edit', [FilmeController::class, 'edit'])->name('filmes.edit');

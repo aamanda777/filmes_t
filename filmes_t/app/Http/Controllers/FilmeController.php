@@ -13,15 +13,30 @@ class FilmeController extends Controller
         return view('listagem', compact('filmes'));
     }
 
-    public function listagem()
+    public function listagem(Request $request)
     {
-        $filmes = Filme::all();
-        return view('listagem', compact('filmes'));
+        $anos = Filme::distinct()->pluck('ano');
+        $categorias = Categoria::all();
+    
+        $filmesQuery = Filme::query();
+    
+        if ($request->filled('ano')) {
+            $filmesQuery->where('ano', $request->ano);
+        }
+    
+        if ($request->filled('categoria')) {
+            $filmesQuery->where('categoria_id', $request->categoria);
+        }
+    
+        $filmes = $filmesQuery->get();
+    
+        return view('listagem', compact('filmes', 'anos', 'categorias'));
     }
+    
 
     public function create()
     {
-        $categorias = Categoria::all(); // Obtenha todas as categorias
+        $categorias = Categoria::all(); 
         return view('create', compact('categorias'));
     }
 
@@ -54,7 +69,7 @@ class FilmeController extends Controller
     public function edit($id)
     {
         $filme = Filme::findOrFail($id);
-        $categorias = Categoria::all(); // Obtenha todas as categorias
+        $categorias = Categoria::all(); 
 
         return view('edit', compact('filme', 'categorias'));
     }
@@ -68,7 +83,7 @@ class FilmeController extends Controller
             'sinopse' => 'required|string',
             'ano' => 'required|integer',
             'categoria_id' => 'required|integer',
-            'trailer' => 'nullable|url', // Alterado para 'nullable|url'
+            'trailer' => 'nullable|url', 
         ]);
     
         if ($request->hasFile('imagem')) {
@@ -92,8 +107,8 @@ class FilmeController extends Controller
     public function detalhes($id)
     {
         $filme = Filme::findOrFail($id);
-        $categorias = Categoria::all(); // Obtenha todas as categorias
+        $categorias = Categoria::all(); 
 
-        return view('detalhes', compact('filme', 'categorias')); // Passe as categorias para a visão
+        return view('detalhes', compact('filme', 'categorias')); 
     }
 }

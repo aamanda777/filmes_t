@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@include('navbar')
 <div class="flex justify-center items-center min-h-screen bg-cover" style="background-image: url('{{ asset('images/aesthetic.jpg') }}');">
     <div class="flex w-full max-w-5xl p-10 bg-black bg-opacity-90 rounded-3xl shadow-2xl">
         <div class="w-1/2 pr-8 flex justify-center items-center">

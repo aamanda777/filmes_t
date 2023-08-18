@@ -42,6 +42,38 @@ class FilmeSeeder extends Seeder
                 'imagem_capa' => 'uploads/belo.jpeg', 
                 'link_trailer' => 'https://www.youtube.com/watch?v=Vv30NI4U5UU&ab_channel=PrimeVideoBrasil', 
             ],
+            [
+                'nome' => 'Interestelar',
+                'sinopse' => 'Um grupo de exploradores viaja através de um buraco de minhoca no espaço-tempo, em uma tentativa de garantir a sobrevivência da humanidade, buscando um novo lar em planetas distantes.',
+                'ano' => 2014,
+                'categoria_id' => 6, 
+                'imagem_capa' => 'uploads/interestelar.jpeg', 
+                'link_trailer' => 'https://www.youtube.com/watch?v=3WzHXI5HizQ&ab_channel=WarnerBros.Pictures', 
+            ],
+            [
+                'nome' => 'Pantera Negra',
+                'sinopse' => 'T Challa, o rei de Wakanda, sobe ao trono na nação africana avançada tecnologicamente, mas sua reivindicação é desafiada por um estrangeiro que possui habilidades sobrenaturais.',
+                'ano' => 2018,
+                'categoria_id' => 1, 
+                'imagem_capa' => 'uploads/pantera_negra.jpeg', 
+                'link_trailer' => 'https://www.youtube.com/watch?v=xC34on1JLXI&ab_channel=MarvelEntertainment', 
+            ],
+            [
+                'nome' => 'De Volta para o Futuro',
+                'sinopse' => 'Marty McFly, um adolescente, é acidentalmente enviado 30 anos no passado em uma máquina do tempo criada por seu excêntrico cientista amigo, Doc Brown. Lá, ele conhece seus jovens pais e deve garantir que eles se apaixonem ou ele deixará de existir.',
+                'ano' => 1985,
+                'categoria_id' => 6, 
+                'imagem_capa' => 'uploads/de_volta_para_o_futuro.jpeg', 
+                'link_trailer' => 'https://www.youtube.com/watch?v=qvsgGtivCgs&ab_channel=UniversalPictures', 
+            ],
+            [
+                'nome' => 'Toy Story',
+                'sinopse' => 'Um grupo de brinquedos ganha vida quando os humanos não estão por perto. Woody, um cowboy de brinquedo, fica com ciúmes quando o novo brinquedo Buzz Lightyear se torna o favorito de seu dono.',
+                'ano' => 1995,
+                'categoria_id' => 4, 
+                'imagem_capa' => 'uploads/toy_story.jpeg', 
+                'link_trailer' => 'https://www.youtube.com/watch?v=KYz2wyBy3kc&ab_channel=Disney%2FPixar', 
+            ],
             
         ]);
     }

@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cadastro;
+use App\Models\Filme;
+use App\Models\Categoria;
+
 
 class AuthController extends Controller
 {
@@ -37,12 +40,7 @@ class AuthController extends Controller
     Auth::login($cadastro);
 
     return redirect()->route('dashboard');
-}
-
-
-    
-
-    
+} 
 
     public function logout()
     {
@@ -55,14 +53,13 @@ class AuthController extends Controller
     {
         return view('login');
     }
-
+    
     public function login(Request $request)
     {
         $credentials = $request->validate([
             'email' => 'required|email',
             'password' => 'required|string',
         ]);
-
     
         if (Auth::attempt($credentials)) {
             return redirect()->route('dashboard');
@@ -70,5 +67,6 @@ class AuthController extends Controller
     
         return redirect()->route('login')->with('mensagem', 'Credenciais inválidas');
     }
-    
+
+
 }

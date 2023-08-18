@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-...P7yvr5+PnmSTSE3mk9VHw"
 crossorigin="anonymous">
 
-    <title>Meu Aplicativo</title>
+    <title>FILMOTECA</title>
     <!-- Adicione seus estilos e scripts aqui -->
 </head>
 <body>

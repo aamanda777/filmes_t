@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@include('navbar')
 <div class="flex justify-center items-center min-h-screen bg-cover bg-red-500">
     <div class="flex flex-col w-full max-w-5xl p-10 bg-black bg-opacity-90 rounded-3xl shadow-5xl">
         <h2 class="text-4xl text-red-600 uppercase mb-6 text-center font-semibold">Editar Filme</h2>

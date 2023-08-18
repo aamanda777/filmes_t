@@ -17,6 +17,13 @@ class CategoriaSeeder extends Seeder
             ['nome' => 'Romance'],
             ['nome' => 'Ficção Científica'],
             ['nome' => 'Terror'],
+            ['nome' => 'Aventura'],
+            ['nome' => 'Fantasia'],
+            ['nome' => 'Suspense'],
+            ['nome' => 'Documentário'],
+            ['nome' => 'Musical'],
+            ['nome' => 'Crime'],
+            ['nome' => 'Mistério'],
         ]);
     }
 }

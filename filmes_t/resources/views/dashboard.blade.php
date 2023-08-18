@@ -1,30 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
-    <body class="bg-gradient-to-br from-black to-gray-800 text-white">
-        
-        <nav class="bg-red-800 p-4">
-            <div class="flex justify-center space-x-4">
-                @auth
-                    @if (auth()->user()->cargo === 'administrador')
-                        <a href="{{ route('categorias.create') }}" class="btn">Registro de Categorias</a>
-                        <a href="{{ route('filmes.create') }}" class="btn">Registro de Filmes</a>
-                        <a href="{{ route('filmes.listagem') }}" class="btn">Listagem de Filmes</a>
-                    @else
-                        <a href="{{ route('filmes.listagem') }}" class="btn">Listagem de Filmes</a>
-                    @endif
-                    <form action="{{ route('logout') }}" method="post">
-                        @csrf
-                        <button type="submit" class="btn">Sair</button>
-                    </form>
-                @endauth
-            </div>
-        </nav>
-
-        <div class="flex items-center justify-center h-screen">
-            <div class="text-center">
-                <h1 class="text-8xl font-bold text-red-600 mb-6">FILMOTECA</h1>
-            </div>
-        </div>
-    </body>
+@include('navbar')
+<div class="bg-cover bg-center h-screen flex items-center justify-center bg-black">
+    <div class="text-center">
+        <h1 class="text-6xl font-bold text-red-600 up mb-4">BEM-VINDO À FILMOTECA</h1>
+        <p class="text-xl text-gray-300 mb-8">Seu destino para explorar filmes incríveis.</p>
+        <a href="{{ route('filmes.listagem') }}" class="inline-block bg-red-600 hover:bg-red-500 text-white py-3 px-8 rounded-lg text-lg font-semibold transition duration-300 ease-in-out">Explorar Filmes</a>
+    </div>
+</div>
 @endsection

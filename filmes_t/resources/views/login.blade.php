@@ -17,7 +17,7 @@
                 </div>
                 <div class="mb-4 flex items-center">
                     <label for="senha" class="w-1/4 text-white pr-4">Senha:</label>
-                    <input type="password" id="senha" name="senha" required class="form-input bg-transparent border-b-2 border-red-500 rounded py-2 px-3 text-white focus:outline-none focus:border-red-800 flex-1">
+                    <input type="password" id="senha" name="password" required class="form-input bg-transparent border-b-2 border-red-500 rounded py-2 px-3 text-white focus:outline-none focus:border-red-800 flex-1">
                 </div>
                 <button type="submit" class="uppercase mt-4 bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-lg w-full mb-4">Entrar</button>
             </form>
