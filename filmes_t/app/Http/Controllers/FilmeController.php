@@ -67,7 +67,7 @@ class FilmeController extends Controller
             'sinopse' => 'required|string',
             'ano' => 'required|integer',
             'categoria_id' => 'required|integer',
-            'trailer' => 'url',
+            'trailer' => 'nullable|url', // Alterado para 'nullable|url'
         ]);
     
         if ($request->hasFile('imagem')) {
@@ -79,8 +79,6 @@ class FilmeController extends Controller
     
         return redirect()->route('filmes.detalhes', $filme->id)->with('success', 'Filme atualizado com sucesso!');
     }
-    
-
 
     public function destroy($id)
     {
