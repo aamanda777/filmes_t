@@ -22,9 +22,14 @@
                 <input type="number" name="ano" class="form-input flex-1 bg-transparent border-b-2 border-red-500 rounded py-2 px-3 text-white focus:outline-none focus:border-red-800" required>
             </div>
             <div class="mb-4 flex">
-                <label for="categoria" class="w-1/4 text-sm font-medium text-gray-300 pr-4">Categoria</label>
-                <input type="text" name="categoria" class="form-input flex-1 bg-transparent border-b-2 border-red-500 rounded py-2 px-3 text-white focus:outline-none focus:border-red-800" required>
-            </div>
+    <label for="categoria_id" class="w-1/4 text-sm font-medium text-gray-300 pr-4">Categoria</label>
+    <select name="categoria_id" class="form-input flex-1  border-b-2 border-red-500 rounded py-2 px-3  focus:outline-none focus:border-red-800" required>
+        @foreach ($categorias as $categoria)
+            <option value="{{ $categoria->id }}">{{ $categoria->nome }}</option>
+        @endforeach
+    </select>
+</div>
+
             <div class="mb-4 flex">
                 <label for="imagem" class="w-1/4 text-sm font-medium text-gray-300 pr-4">Imagem</label>
                 <input type="file" name="imagem" class="form-input flex-1 bg-transparent border-b-2 border-red-500 rounded py-2 px-3 text-white focus:outline-none focus:border-red-800" required>
@@ -34,6 +39,9 @@
                 <input type="url" name="trailer" class="form-input flex-1 bg-transparent border-b-2 border-red-500 rounded py-2 px-3 text-white focus:outline-none focus:border-red-800" required>
             </div>
             <button type="submit" class="bg-red-600 hover:bg-red-500 text-white py-2 px-4 rounded focus:outline-none focus:shadow-outline-red">Registrar</button>
+            <a href="{{ route('dashboard') }}" class="block mt-4 text-gray-300 hover:text-white">
+    <i class="fas fa-arrow-left text-white mr-2"></i>Voltar
+</a>
         </form>
     </div>
 </div>

@@ -1,23 +1,36 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <h2>Registro</h2>
-    <form method="POST" action="{{ route('registro') }}">
-        @csrf
-        <div class="form-group">
-            <label for="nome">Nome:</label>
-            <input type="text" name="nome" id="nome" class="form-control" required>
+<div class="relative min-h-screen grid bg-black">
+    <div class="flex flex-col sm:flex-row items-center md:items-start sm:justify-center md:justify-start flex-auto min-w-0">
+        <!-- ... restante do código ... -->
+
+        <div class="md:flex md:items-center md:justify-left w-full sm:w-auto md:h-full xl:w-1/2 p-8 md:p-10 lg:p-14 sm:rounded-lg md:rounded-none">
+            <div class="max-w-xl w-full space-y-12">
+                <div class="lg:text-left text-center">
+                    <div class="flex items-center justify-center">
+                        <div class="bg-black flex flex-col w-80 border border-red-800 rounded-lg px-8 py-10">
+                        <h1 class="text-3xl uppercase text-white font-bold text-center">REGISTRE-SE</h1>
+                        <form action="{{ route('registro.submit') }}" method="POST" class="flex flex-col space-y-8 mt-10">
+                                @csrf
+                                <label class="font-bold text-lg text-white">Nome:</label>
+                                <input type="text" name="nome" id="nome" class="border rounded-lg py-3 px-3 mt-4 bg-black border-red-600 0 text-white focus:border-red-800" required>
+                                <label class="font-bold text-lg text-white">Email:</label>
+                                <input type="email" name="email" id="email" class="border rounded-lg py-3 px-3 mt-4 bg-black border-red-600  text-white focus:border-red-800" required>
+                                <label class="font-bold text-lg text-white">Senha:</label>
+                                <input type="password" name="password" id="password" class="border rounded-lg py-3 px-3 mt-4 bg-black border-red-600  text-white focus:border-red-800" required>
+                                <label class="font-bold text-lg text-white">Cargo:</label>
+                                <select name="cargo" id="cargo" class="border rounded-lg py-3 px-3 mt-4 bg-black border-red-600 text-white focus:border-red-800" required>
+                                    <option value="usuario">Usuário</option>
+                                    <option value="administrador">Administrador</option>
+                                </select>
+                                <button type="submit" class="uppercase mt-4 bg-red-600 hover:bg-red-500 text-white font-bold py-2 px-4 rounded-lg w-full mb-4">Registrar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            <label for="email">Email:</label>
-            <input type="email" name="email" id="email" class="form-control" required>
-        </div>
-        <div class="form-group">
-            <label for="password">Senha:</label>
-            <input type="password" name="password" id="password" class="form-control" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Registrar</button>
-    </form>
+    </div>
 </div>
 @endsection

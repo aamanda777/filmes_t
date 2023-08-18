@@ -35,6 +35,7 @@ class FilmeController extends Controller
             'imagem' => 'required|image|mimes:jpeg,png,jpg,gif',
             'trailer' => 'required|url',
         ]);
+        
 
         $imagemPath = $data['imagem']->store('uploads', 'public');
 

@@ -9,7 +9,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Cadastro extends Authenticatable
 {
-    protected $fillable = ['nome', 'email', 'password', 'cargo'];
+    protected $fillable = [
+        'nome', 'email', 'password', 'cargo',
+    ];
+    
 
 
     protected $hidden = [

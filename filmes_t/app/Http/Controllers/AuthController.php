@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
@@ -14,26 +15,34 @@ class AuthController extends Controller
     }
 
     public function register(Request $request)
-    {
-        $data = $request->validate([
-            'nome' => 'required|string|max:255',
-            'email' => 'required|email|unique:cadastros',
-            'password' => 'required|string|min:6',
-        ]);
+{
+    $data = $request->validate([
+        'nome' => 'required|string|max:255',
+        'email' => 'required|email|unique:cadastros',
+        'password' => 'required|string|min:6',
+        'cargo' => 'required|string',
+    ]);
 
-        $cargo = $data['password'] === 'amanda' ? 'administrador' : 'usuario';
+    // Determine o cargo com base nas credenciais ou outro critério
+    $cargo = $data['cargo'];
 
-        $cadastro = Cadastro::create([
-            'nome' => $data['nome'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'cargo' => $cargo,
-        ]);
+    // Crie o registro com o cargo determinado
+    $cadastro = Cadastro::create([
+        'nome' => $data['nome'],
+        'email' => $data['email'],
+        'password' => Hash::make($data['password']),
+        'cargo' => $cargo,
+    ]);
 
-        Auth::login($cadastro);
+    Auth::login($cadastro);
 
-        return redirect('/dashboard');
-    }
+    return redirect()->route('dashboard');
+}
+
+
+    
+
+    
 
     public function logout()
     {
@@ -54,10 +63,12 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
 
+    
         if (Auth::attempt($credentials)) {
-            return redirect('/dashboard');
+            return redirect()->route('dashboard');
         }
-
-        return redirect()->back()->with('error', 'Credenciais inválidas');
+    
+        return redirect()->route('login')->with('mensagem', 'Credenciais inválidas');
     }
+    
 }

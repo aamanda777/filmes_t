@@ -10,7 +10,7 @@ class CadastrosSeeder extends Seeder
     public function run()
     {
         DB::table('cadastros')->insert([
-            ['nome' => 'Administrador', 'password' => bcrypt('amanda'), 'cargo' => 'administrador'],
+            ['nome' => 'user', 'password' => bcrypt('123456'), 'email' => 'user@gmail.com', 'cargo' => 'administrador'],
         ]);
     }
 }
